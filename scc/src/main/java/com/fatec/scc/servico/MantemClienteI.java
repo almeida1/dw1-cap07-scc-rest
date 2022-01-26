@@ -39,8 +39,8 @@ public class MantemClienteI implements MantemCliente {
 	public Cliente save(Cliente cliente) {
 		logger.info(">>>>>> servico save chamado ");
 		Optional<Cliente> umCliente =consultaPorCpf(cliente.getCpf());
-		
 		Endereco endereco = obtemEndereco(cliente.getCep());
+		logger.info(">>>>>> save obtem endereco = " + endereco.getLogradouro());
 		if (umCliente.isEmpty() & endereco != null) {
 			logger.info(">>>>>> controller create - dados validos");
 			cliente.obtemDataAtual(new DateTime());
@@ -55,6 +55,7 @@ public class MantemClienteI implements MantemCliente {
 	public Cliente altera(Cliente cliente) {
 		Optional<Cliente> record = repository.findById(cliente.getId());
 		Endereco endereco = obtemEndereco(cliente.getCep());
+		logger.info(">>>>>> altera obtem endereco = " + endereco.getLogradouro());
 		if (record.isPresent() & endereco != null) {
 			record.get().setCpf(cliente.getCpf());
 			record.get().setNome(cliente.getNome());

@@ -10,6 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.fatec.scc.model.Cliente;
 import com.fatec.scc.model.ClienteRepository;
+import com.fatec.scc.ports.MantemCliente;
 import com.fatec.scc.security.ApplicationUser;
 import com.fatec.scc.security.ApplicationUserRepository;
 
@@ -22,14 +23,14 @@ class LoadDatabase {
 	@Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 	@Bean
-	CommandLineRunner initDatabase(ClienteRepository repository) {
+	CommandLineRunner initDatabase(MantemCliente mantemCliente) {
 
 		return args -> {
 			Cliente cliente1 = new Cliente("Miguel Soares", "10/02/1960", "M", "99504993052", "04280130", "2983");
-			log.info("Preloading " + repository.save(cliente1));
+			log.info("Preloading " + mantemCliente.save(cliente1));
 
 			Cliente cliente2 = new Cliente("Marcos Silva", "04/10/1974", "M", "43011831084", "08545160", "2983");
-			log.info("Preloading " + repository.save(cliente2));
+			log.info("Preloading " + mantemCliente.save(cliente2));
 			
 			ApplicationUser user = new ApplicationUser();
 			user.setUsername("jose");
