@@ -31,6 +31,8 @@ import com.fatec.scc.model.Cliente;
 
 import com.fatec.scc.ports.MantemCliente;
 
+import io.swagger.v3.oas.annotations.Operation;
+
 @RestController // controller deve retornar valores escritos diretamente no body da resposta
 @RequestMapping("/api/v1/clientes")
 public class GUIClienteController {
@@ -38,7 +40,7 @@ public class GUIClienteController {
 	Logger logger = LogManager.getLogger(this.getClass());
 	@Autowired
 	MantemCliente servico;
-
+	@Operation(summary = "Cadastra um cliente para um CPF valido nao cadastrado.")
 	@PostMapping
 	public ResponseEntity<?> cadastrar(@Valid @RequestBody Cliente cliente, BindingResult result) {
 		logger.info(">>>>>> 1. controller cadastrar - post iniciado");

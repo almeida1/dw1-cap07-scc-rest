@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.fatec.scc.model.Cliente;
-import com.fatec.scc.model.ClienteRepository;
 import com.fatec.scc.ports.MantemCliente;
 import com.fatec.scc.security.ApplicationUser;
 import com.fatec.scc.security.ApplicationUserRepository;

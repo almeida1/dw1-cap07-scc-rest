@@ -49,17 +49,17 @@ class REQ03AlterarClienteTests {
 		assertEquals(HttpStatus.OK, resposta1.getStatusCode());
 		// armazena o token no header do post
 		HttpHeaders headers = resposta1.getHeaders();
-		HttpEntity<?> httpEntity2 = new HttpEntity<>(headers);
+		
 		Cliente cliente = new Cliente("Miguel da Silva","20/10/1961","M", "33591113549",  "03694000", "123");
 		
 		mantemCliente.save(cliente);
 		Optional<Cliente> registro = clienteRepository.findByCpf("33591113549");
 		Cliente clienteCadastrado = registro.get();
-		logger.info(">>>>>> 1. Cliente cadastrado -> " + clienteCadastrado.toString());
+		logger.info(">>>>>> CT01. Cliente cadastrado -> " + clienteCadastrado.toString());
 		
 		assertTrue(registro.isPresent());
 		// **************************************************************************************
-		// quando o usuario confirma a alteracao do nome valido e com token valido
+		// quando o usuario confirma a alteracao do nome 
 		// **************************************************************************************
 		cliente.setNome("Novo Nome");
 		cliente.setId(clienteCadastrado.getId());
@@ -67,10 +67,11 @@ class REQ03AlterarClienteTests {
 		ResponseEntity<String> resposta = testRestTemplate.exchange("/api/v1/clientes/id/{id}", HttpMethod.PUT, httpEntity3,
 				String.class, clienteCadastrado.getId());
 		assertEquals("200 OK", resposta.getStatusCode().toString());
+		//o resultado retornado como String JSon eh transformado no objeto cliente
 		Gson g = new Gson(); 
 		Cliente c = g.fromJson(resposta.getBody(), Cliente.class);
 		assertEquals("Novo Nome", c.getNome());
-		logger.info(">>>>>> 2. Alterar cliente - Cliente alterado => " + cliente.toString());
+		logger.info(">>>>>> CT01. Alterar cliente - Cliente alterado => " + cliente.toString());
 	}
 
 }

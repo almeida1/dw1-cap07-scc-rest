@@ -1,6 +1,5 @@
 package com.fatec.scc.security;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fatec.scc.adapters.GUIClienteController;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

@@ -8,6 +8,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -27,11 +28,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	//recursos com acesso liberado deve-se estabelecer a politica para cadastros de usuario
 	private static final String[] PUBLIC_MATCHERS = {
 			"/h2-console/**",
-			"/users/sign-up/**"
+			"/users/sign-up/**",
+			"/api/v1/clientes/swagger-ui/**",
+			"/swagger-ui/**"
 	};
 	//recursos de consulta do tipo GET com acesso liberado
 	private static final String[] PUBLIC_MATCHERS_GET = {
 			"/api/v1/clientes"
+			//"/swagger-ui/index.html/**"
+			//"/swagger-ui/**"
 	};
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -60,6 +65,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		configuration.setAllowedMethods(Arrays.asList("POST", "GET", "PUT", "DELETE", "OPTIONS"));
 		final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 		source.registerCorsConfiguration("/**", configuration);
+		
 		return source;
+	}
+    @Override
+	public void configure(WebSecurity web) throws Exception {
+		web.ignoring().antMatchers("/static/**", "/css/**", "/js/**", "/images/**", "/h2-console/**","/api/v1/clientes/**" ,"/api/v1/clientes/v3.0.0/swagger-ui/**", "/swagger-ui/**");
 	}
   }
