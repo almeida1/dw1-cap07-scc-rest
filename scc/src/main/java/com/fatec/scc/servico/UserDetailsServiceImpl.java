@@ -1,10 +1,13 @@
-package com.fatec.scc.security;
+package com.fatec.scc.servico;
 
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import com.fatec.scc.model.ApplicationUser;
+import com.fatec.scc.ports.ApplicationUserRepository;
 
 import static java.util.Collections.emptyList;
 

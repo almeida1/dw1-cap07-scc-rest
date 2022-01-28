@@ -1,4 +1,4 @@
-package com.fatec.scc.security;
+package com.fatec.scc.adapters;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.fatec.scc.model.ApplicationUser;
+import com.fatec.scc.ports.ApplicationUserRepository;
 
 @RestController
 @RequestMapping("/users")

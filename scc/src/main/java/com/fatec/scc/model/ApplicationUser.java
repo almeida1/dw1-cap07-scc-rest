@@ -1,4 +1,4 @@
-package com.fatec.scc.security;
+package com.fatec.scc.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

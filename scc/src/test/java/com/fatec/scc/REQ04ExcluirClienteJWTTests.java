@@ -13,7 +13,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import com.fatec.scc.security.ApplicationUser;
+import com.fatec.scc.model.ApplicationUser;
 import com.fatec.scc.model.Cliente;
 
 

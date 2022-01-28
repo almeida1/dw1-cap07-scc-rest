@@ -1,4 +1,4 @@
-package com.fatec.scc.model;
+package com.fatec.scc.ports;
 
 import java.util.Optional;
 
@@ -8,6 +8,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.fatec.scc.model.Cliente;
 
 @Repository
 public interface ClienteRepository extends JpaRepository<Cliente, Long> {

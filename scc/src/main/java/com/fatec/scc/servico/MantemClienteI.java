@@ -13,8 +13,8 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
 import com.fatec.scc.model.Cliente;
-import com.fatec.scc.model.ClienteRepository;
 import com.fatec.scc.model.Endereco;
+import com.fatec.scc.ports.ClienteRepository;
 import com.fatec.scc.ports.MantemCliente;
 
 @Service
