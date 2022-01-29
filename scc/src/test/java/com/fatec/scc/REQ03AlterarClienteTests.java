@@ -64,7 +64,7 @@ class REQ03AlterarClienteTests {
 		cliente.setNome("Novo Nome");
 		cliente.setId(clienteCadastrado.getId());
 		HttpEntity<Cliente> httpEntity3 = new HttpEntity<>(cliente, headers);
-		ResponseEntity<String> resposta = testRestTemplate.exchange("/api/v1/clientes/id/{id}", HttpMethod.PUT, httpEntity3,
+		ResponseEntity<String> resposta = testRestTemplate.exchange("/api/v1/clientes", HttpMethod.PUT, httpEntity3,
 				String.class, clienteCadastrado.getId());
 		assertEquals("200 OK", resposta.getStatusCode().toString());
 		//o resultado retornado como String JSon eh transformado no objeto cliente
