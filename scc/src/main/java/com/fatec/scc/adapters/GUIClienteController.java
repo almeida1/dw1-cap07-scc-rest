@@ -98,8 +98,8 @@ public class GUIClienteController {
 		}
 	}
 
-	@PutMapping("/id/{id}")
-	public ResponseEntity<Cliente> update(@PathVariable("id") long id, @RequestBody @Valid Cliente clienteModificado) {// throws
+	@PutMapping
+	public ResponseEntity<Cliente> update(@RequestBody @Valid Cliente clienteModificado) {// throws
 		// URISyntaxException
 		// {
 		logger.info(">>>>>> 1. controller alterar - put iniciado id => " + clienteModificado.getId());

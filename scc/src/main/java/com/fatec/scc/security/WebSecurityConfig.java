@@ -28,15 +28,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	//recursos com acesso liberado deve-se estabelecer a politica para cadastros de usuario
 	private static final String[] PUBLIC_MATCHERS = {
 			"/h2-console/**",
-			"/users/sign-up/**",
-			"/api/v1/clientes/swagger-ui/**",
-			"/swagger-ui/**"
+			"/users/sign-up/**"
 	};
 	//recursos de consulta do tipo GET com acesso liberado
 	private static final String[] PUBLIC_MATCHERS_GET = {
-			"/api/v1/clientes"
-			//"/swagger-ui/index.html/**"
-			//"/swagger-ui/**"
+			"/api/v1/clientes/{cpf}"
+			
 	};
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -70,6 +67,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	}
     @Override
 	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/static/**", "/css/**", "/js/**", "/images/**", "/h2-console/**","/api/v1/clientes/**" ,"/api/v1/clientes/v3.0.0/swagger-ui/**", "/swagger-ui/**");
+		web.ignoring().antMatchers("/static/**", "/css/**", "/js/**", "/images/**", "/h2-console/**","/api/v1/clientes/{cpf}**");
 	}
   }
